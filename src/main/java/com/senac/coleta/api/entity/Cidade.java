@@ -2,9 +2,12 @@ package com.senac.coleta.api.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,20 +15,21 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "estado")
-public class Estado {
-	
+@Table(name = "cidade")
+public class Cidade {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "estado_id")
+	@Column(name= "cidade_id")
 	private Integer id;
 	
-	@Column(name = "estado_nome", unique = true)
+	@Column(name= "cidade_nome")
 	private String nome;
 	
-	@Column(name = "estado_sigla")
-	private String sigla;
+	@Column(name= "cidade_status")
+	private String status;
 	
-	@Column(name = "estado_status")
-	private int status;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "estado_estado_id")
+    private Estado estado;
 }

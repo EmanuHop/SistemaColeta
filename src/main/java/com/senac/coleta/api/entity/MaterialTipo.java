@@ -12,20 +12,17 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "estado")
-public class Estado {
-	
+@Table(name = "material_tipo")
+public class MaterialTipo {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "estado_id")
-	private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "material_tipo_id")
+	private Long id;
 	
-	@Column(name = "estado_nome", unique = true)
-	private String nome;
+	@Column(name = "material_tipo_descricao")
+	private String descricao;
 	
-	@Column(name = "estado_sigla")
-	private String sigla;
-	
-	@Column(name = "estado_status")
+	@Column(name = "material_tipo_status")
 	private int status;
 }
